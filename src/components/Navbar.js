@@ -1,16 +1,16 @@
 // import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-// import { a } from 'react-router-dom' 
+import logo from './logo.png'
 
 export default class Navbar
     extends Component {
-    // static propTypes = { second: third }
 
     render() {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container-fluid">
+                        <img src={logo} alt="logo" style={{ width: '50px', marginRight: '10px' }} />
                         <a className="navbar-brand" href="/">NewsMonk</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
@@ -24,23 +24,7 @@ export default class Navbar
                                 <li className="nav-item"><a className="nav-link" href="/science">Science</a></li>
                                 <li className="nav-item"><a className="nav-link" href="/sports">Sports</a></li>
                                 <li className="nav-item"><a className="nav-link" href="/technology">Technology</a></li>
-                                {/* <li className="nav-item dropdown">
-                                    <a className="nav-a dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropdown
-                                    </a>
-                                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a className="dropdown-item" href="/">cricket</a></li>
-                                        <li><a className="dropdown-item" href="/">hockey</a></li>
-                                        <li><hr className="dropdown-divider" /></li>
-                                        <li><a className="dropdown-item" href="/">Something else here</a></li>
-                                    </ul>
-                                </li> */}
-                                
                             </ul>
-                            {/* <form className="d-flex" role="search">
-                                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                                <button className="btn btn-outline-success" type="submit">Search</button>
-                            </form> */}
                         </div>
                     </div>
                 </nav>

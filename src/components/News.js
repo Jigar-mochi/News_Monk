@@ -28,7 +28,8 @@ export default class News extends Component {
         }
     }
     async update() {
-        let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=836a9df728d14ea086a846885f4fd185&page=${this.state.page}&pagesize=${this.props.pagesize}`;
+        this.props.setProgress(0)
+        let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=${this.props.apik}&page=${this.state.page}&pagesize=${this.props.pagesize}`;
         let data = await fetch(url);
         this.setState({ lodding: true });
         let parsedata = await data.json();
@@ -37,6 +38,7 @@ export default class News extends Component {
             totalResults: parsedata.totalResults,
             lodding: false
         })
+        this.props.setProgress(100)
     }
     async componentDidMount() {
         this.setState({
@@ -44,22 +46,10 @@ export default class News extends Component {
         })
         this.update()
     }
-    // handleprevious = async () => {
-    //     this.setState({
-    //         page: this.state.page - 1
-    //     })
-    //     this.update()
 
-    // }
-    // handlenext = async () => {
-    //     this.setState({
-    //         page: this.state.page + 1
-    //     })
-    //     this.update()
-    // }
     fetchMoreData = async () => {
         this.state.page = this.state.page + 1
-        let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=836a9df728d14ea086a846885f4fd185&page=${this.state.page}&pagesize=${this.props.pagesize}`;
+        let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&apiKey=${this.props.apik}&page=${this.state.page}&pagesize=${this.props.pagesize}`;
         let data = await fetch(url);
         let parsedata = await data.json();
         this.setState({
@@ -68,9 +58,6 @@ export default class News extends Component {
         })
         console.log(this.state.articles.length !== this.state.totalResults)
     };
-    
-
-
 
     render() {
         return (
@@ -86,24 +73,23 @@ export default class News extends Component {
                     {this.state.lodding && <Lodding />}
                     <div className="container">
                         <div className="row" >
+                            
                             {this.state.articles.map((element) => {
                                 return <div className="col-md-4 " key={element.url}>
-                                    <NewsItem title={element.title ? element.title.slice(0, 45) : ""} description={element.description ? element.description.slice(0, 45) : ""} imageurl={element.urlToImage ? element.urlToImage : ""} newsurl={element.url ? element.url : ""} author={element.author} time={element.publishedAt} />
+                                    <NewsItem title={element.title ? element.title.slice(0, 45) : ""}
+                                        description={element.description ? element.description.slice(0, 45) : ""}
+                                        imageurl={element.urlToImage ? element.urlToImage : ""}
+                                        newsurl={element.url ? element.url : ""}
+                                        author={element.author} time={element.publishedAt} />
                                 </div>
-
                             })
                             }
                         </div>
                     </div>
                 </InfiniteScroll>
-                {/* <div className='d-flex justify-content-between'>
-                <button type="button" disabled={this.state.page <= 1} onClick={this.handleprevious} className="btn btn-primary">&#8592; Privious</button>
-                <button type="button" disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pagesize)} onClick={this.handlenext} className="btn btn-primary">Next &#8594;</button>
-            </div> */}
 
             </div>
         )
     }
 }
-
 
