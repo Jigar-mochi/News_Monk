@@ -1,12 +1,13 @@
 import React from 'react'
+import image from './No_image.jpg'
 
-const NewsItem = (props)=> {
+const NewsItem = (props) => {
     let { title, description, imageurl, newsurl, author, time } = props;
 
     return (
         <div>
             <div className="card my-3 shadow p-3 mb-5 bg-body rounded" style={{ width: "22rem", margin: "auto" }}>
-                <img src={imageurl ? imageurl : "https://www.greatandhra.com/newphotos10/naga_sam11656402879.jpg"} style={{ height: "14rem" }} className="card-img-top" alt="..." />
+                <img src={imageurl ? imageurl : image} style={{ height: "14rem" }} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{title}...</h5>
                     <p className="card-text">{description}...</p>

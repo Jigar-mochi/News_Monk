@@ -16,6 +16,7 @@ const News = (props) => {
     const update = async () => {
         props.setProgress(0)
         let url = `https://newsapi.org/v2/top-headlines?category=${props.category}&country=${props.country}&apiKey=${props.apik}&page=${page}&pagesize=${props.pagesize}`;
+        console.log(url)
         setLodding(true)
         let data = await fetch(url);
         // props.setProgress(50)
@@ -26,9 +27,10 @@ const News = (props) => {
         props.setProgress(100)
     }
     useEffect(() => {
+        console.log("123")
         update()
         // eslint-disable-next-line
-    }, [page])
+    }, [])
 
     const fetchMoreData = async () => {
         
