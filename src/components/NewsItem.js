@@ -6,7 +6,7 @@ const NewsItem = (props) => {
 
     return (
         <div>
-            <div className="card my-3 shadow p-3 mb-5 bg-body rounded" style={{ width: "22rem", margin: "auto" }}>
+            <div className="card my-3 shadow p-3 mb-5 bg-body rounded" >
                 <img src={imageurl ? imageurl : image} style={{ height: "14rem" }} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{title}...</h5>
@@ -21,3 +21,4 @@ const NewsItem = (props) => {
 
 }
 export default NewsItem
+// style={{ width: "22rem", margin: "auto" }}

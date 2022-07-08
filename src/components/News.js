@@ -59,7 +59,7 @@ const News = (props) => {
                     <div className="row" >
 
                         {articles.map((element, index) => {
-                            return <div className="col-md-4 " key={element.url}>
+                            return <div className="col-md-3 " key={element.url}>
                                 <div key={element.index}>
                                     <NewsItem title={element.title ? element.title.slice(0, 45) : ""}
                                         description={element.description ? element.description.slice(0, 45) : ""}
